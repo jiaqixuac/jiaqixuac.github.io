@@ -3,281 +3,595 @@
 <html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="keywords"
           content="Jiaqi Xu, xujiaqi, jiaqi xu, Xu Jiaqi, Jiaqi, Huawei, Noah's Ark Lab, CUHK, The Chinese University of Hong Kong, cse, BUAA, Beihang, Beihang University">
     <meta name="description" content="Jiaqi Xu's home page">
-    <title>Jiaqi Xu - CUHK CSE</title>
+    <title>Jiaqi Xu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            font-size: 15px;
+            line-height: 1.7;
+            color: #222;
+            background: #fff;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 40px 24px 80px;
+        }
+
+        /* ── Header ── */
+        .header {
+            display: flex;
+            gap: 36px;
+            align-items: flex-start;
+            margin-bottom: 48px;
+        }
+
+        .header-photo img {
+            width: 160px;
+            height: 160px;
+            border-radius: 8px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .header-bio h1 {
+            font-size: 28px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .header-bio .position {
+            font-size: 15px;
+            color: #555;
+            margin-bottom: 14px;
+        }
+
+        .header-bio .bio {
+            font-size: 14.5px;
+            color: #333;
+            margin-bottom: 16px;
+        }
+
+        .header-bio .bio p + p {
+            margin-top: 10px;
+        }
+
+        .header-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .header-links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 5px 12px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            font-size: 13px;
+            color: #333;
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
+        }
+
+        .header-links a:hover {
+            border-color: #555;
+            color: #000;
+        }
+
+        /* ── Sections ── */
+        section { margin-bottom: 40px; }
+
+        section h2 {
+            font-size: 18px;
+            font-weight: 600;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e0e0;
+            margin-bottom: 20px;
+        }
+
+        /* ── Publications ── */
+        .pub-list { list-style: none; }
+
+        .pub-item {
+            display: flex;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .pub-venue-col {
+            flex-shrink: 0;
+            width: 72px;
+            padding-top: 2px;
+        }
+
+        .venue {
+            display: inline-block;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+            padding: 2px 7px;
+            border-radius: 4px;
+            color: #fff;
+            white-space: nowrap;
+        }
+
+        .venue-CVPR  { background: #c0392b; }
+        .venue-NeurIPS { background: #6c3483; }
+        .venue-ICCV  { background: #1a5276; }
+        .venue-ECCV  { background: #1a7a4a; }
+        .venue-ICLR  { background: #d35400; }
+        .venue-AAAI  { background: #2471a3; }
+        .venue-NAACL { background: #117a65; }
+        .venue-ICRA  { background: #7d6608; }
+        .venue-IROS  { background: #7d6608; }
+        .venue-MICCAI { background: #784212; }
+        .venue-TCSVT { background: #515a5a; }
+        .venue-TMI   { background: #515a5a; }
+        .venue-ACM   { background: #515a5a; }
+        .venue-ECR   { background: #515a5a; }
+
+        .pub-body {}
+
+        .pub-title {
+            font-size: 14.5px;
+            font-weight: 600;
+            margin-bottom: 2px;
+        }
+
+        .pub-authors {
+            font-size: 13.5px;
+            color: #555;
+            margin-bottom: 2px;
+        }
+
+        .pub-venue-line {
+            font-size: 13.5px;
+            color: #555;
+            font-style: italic;
+            margin-bottom: 6px;
+        }
+
+        .pub-links { display: flex; flex-wrap: wrap; gap: 6px; }
+
+        .btn {
+            display: inline-block;
+            font-size: 12px;
+            padding: 2px 9px;
+            border: 1px solid #bbb;
+            border-radius: 4px;
+            color: #444;
+            text-decoration: none;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .btn:hover {
+            background: #f0f0f0;
+            color: #000;
+        }
+
+        /* ── Experience ── */
+        .exp-item { margin-bottom: 16px; }
+        .exp-org  { font-weight: 500; }
+        .exp-meta { font-size: 13.5px; color: #666; }
+
+        /* ── Awards ── */
+        .award-list { list-style: none; }
+        .award-list li { margin-bottom: 4px; font-size: 14.5px; }
+        .award-list li::before { content: "·  "; color: #999; }
+
+        /* ── Teaching ── */
+        .teach-list { list-style: none; }
+        .teach-list li { margin-bottom: 4px; font-size: 14.5px; }
+
+        /* ── Professional Activities ── */
+        .activity-section { margin-bottom: 16px; }
+        .activity-section h3 { font-size: 14.5px; font-weight: 600; margin-bottom: 4px; }
+        .activity-section p  { font-size: 14px; color: #444; }
+
+        /* ── Misc ── */
+        .misc-text { font-size: 14.5px; }
+
+        /* ── Responsive ── */
+        @media (max-width: 600px) {
+            .header { flex-direction: column; align-items: center; text-align: center; }
+            .header-links { justify-content: center; }
+            .pub-item { flex-direction: column; gap: 6px; }
+            .pub-venue-col { width: auto; }
+        }
+    </style>
 </head>
 
 <body>
-<img src="assets/jiaqi.jpg" alt="Jiaqi Xu"/>
+<div class="container">
 
-<h1><b>Jiaqi Xu</b></h1>
+    <!-- ══ Header ══ -->
+    <header class="header">
+        <div class="header-photo">
+            <img src="assets/jiaqi.jpg" alt="Jiaqi Xu">
+        </div>
+        <div class="header-bio">
+            <h1>Jiaqi Xu</h1>
+            <p class="position">Researcher, Huawei Noah's Ark Lab</p>
+            <div class="bio">
+                <p>I am currently a researcher at Huawei Noah's Ark Lab, focusing on multimodal image/video generation, editing and low-level vision.
+                We are currently seeking self-motivated research interns — feel free to contact me if you are interested.</p>
+                <p>I got my Ph.D. from The Chinese University of Hong Kong (CUHK) in 2025,
+                advised by <a href="http://www.cse.cuhk.edu.hk/~pheng/">Prof. Pheng-Ann Heng</a>
+                and <a href="http://www.cse.cuhk.edu.hk/~qdou/">Prof. Qi Dou</a>.
+                I received my M.Sc. in Information Engineering from CUHK
+                and B.Eng. in Biomedical Engineering from Beihang University.</p>
+            </div>
+            <div class="header-links">
+                <a href="mailto:jiaqixuac@gmail.com">Email</a>
+                <a href="https://scholar.google.com/citations?user=oWvJUfoAAAAJ" target="_blank">Google Scholar</a>
+                <a href="https://github.com/jiaqixuac" target="_blank">GitHub</a>
+            </div>
+        </div>
+    </header>
 
-<p>
-    I am a researcher at Huawei Noah's Ark Lab, focusing on multimodal image/video generation, editing and low-level vision.<br>
-    We are currently seeking self-motivated research interns.
-    Feel free to contact me via email if you are interested.<br>
-    <br>
-    Previously, I obtained my Ph.D. from The Chinese University of Hong Kong (CUHK) in 2025,
-    where I was advised by <a href="http://www.cse.cuhk.edu.hk/~pheng/">Prof. Pheng-Ann Heng</a>
-    and <a href="http://www.cse.cuhk.edu.hk/~qdou/">Prof. Qi Dou</a>.<br>
-    I received my M.Sc. in Information Engineering from CUHK
-    and B.Eng. in Biomedical Engineering from Beihang Univerisity.
-</p>
+    <!-- ══ Publications ══ -->
+    <section id="publications">
+        <h2>Publications</h2>
+        <p style="font-size:13px;color:#777;margin-bottom:16px;">(*equal contribution)</p>
+        <ul class="pub-list">
 
-<p>
-    <!-- Rm 1024, Ho Sin-Hang Engineering Building, Dept. of CSE, CUHK,
-    Shatin, Hong Kong<br> -->
-    <!-- Email: jqxu [at] cse [dot] cuhk [dot] edu -->
-    Email: jiaqixuac [at] gmail [dot] com
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-CVPR">CVPR</span><br><span style="font-size:11px;color:#888">2026</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">HP-Edit: A Human-Preference Post-Training Framework for Image Editing</div>
+                    <div class="pub-authors">Fan Li, Chonghuinan Wang, Lina Lei, Yuping Qiu, <strong>Jiaqi Xu</strong>, Jiaxiu Jiang, Xinran Qin, Zhikai Chen, Fenglong Song, Zhixin Wang, Renjing Pei, Wangmeng Zuo</div>
+                    <div class="pub-venue-line">Conference on Computer Vision and Pattern Recognition (CVPR), 2026.</div>
+                </div>
+            </li>
 
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-CVPR">CVPR</span><br><span style="font-size:11px;color:#888">2026</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">ColorFLUX: A Structure-Color Decoupling Framework for Old Photo Colorization</div>
+                    <div class="pub-authors">Bingchen Li, Zhixin Wang, Fan Li, <strong>Jiaqi Xu</strong>, Jiaming Guo, Renjing Pei, Xin Li, Zhibo Chen</div>
+                    <div class="pub-venue-line">Conference on Computer Vision and Pattern Recognition (CVPR), 2026.</div>
+                </div>
+            </li>
 
-<h2><b>Publications</b></h2>
-(*equal contribution)
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-AAAI">AAAI</span><br><span style="font-size:11px;color:#888">2026</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Test-Time Preference Optimization for Image Restoration</div>
+                    <div class="pub-authors">Bingchen Li, Xin Li, <strong>Jiaqi Xu</strong>, Jiaming Guo, Wenbo Li, Renjing Pei, Zhibo Chen</div>
+                    <div class="pub-venue-line">Conference on Artificial Intelligence (AAAI), 2026.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2511.19169">arXiv</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>HP-Edit: A Human-Preference Post-Training Framework for Image Editing</b><br>
-    Fan Li, Chonghuinan Wang, Lina Lei, Yuping Qiu, <b>Jiaqi Xu</b>, Jiaxiu Jiang, Xinran Qin, Zhikai Chen, Fenglong Song, Zhixin Wang, Renjing Pei, Wangmeng Zuo<br>
-    <i>Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</i>, 2026.<br>
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-NeurIPS">NeurIPS</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Real-World Adverse Weather Image Restoration via Dual-Level Reinforcement Learning with High-Quality Cold Start</div>
+                    <div class="pub-authors">Fuyang Liu, <strong>Jiaqi Xu</strong>, Xiaowei Hu</div>
+                    <div class="pub-venue-line">Conference on Neural Information Processing Systems (NeurIPS), 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2511.05095">arXiv</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>ColorFLUX: A Structure-Color Decoupling Framework for Old Photo Colorization</b><br>
-    Bingchen Li, Zhixin Wang, Fan Li, <b>Jiaqi Xu</b>, Jiaming Guo, Renjing Pei, Xin Li, Zhibo Chen<br>
-    <i>Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</i>, 2026.<br>
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-NeurIPS">NeurIPS</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">PocketSR: The Super-Resolution Expert in Your Pocket Mobiles</div>
+                    <div class="pub-authors">Haoze Sun, Linfeng Jiang, Fan Li, Renjing Pei, Zhixin Wang, Yong Guo, <strong>Jiaqi Xu</strong>, Haoyu Chen, Jin Han, Fenglong Song, Yujiu Yang, Wenbo Li</div>
+                    <div class="pub-venue-line">Conference on Neural Information Processing Systems (NeurIPS), 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2510.03012">arXiv</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Test-Time Preference Optimization for Image Restoration</b><br>
-    Bingchen Li, Xin Li, <b>Jiaqi Xu</b>, Jiaming Guo, Wenbo Li, Renjing Pei, Zhibo Chen<br>
-    <i>Conference on Artificial Intelligence (<b>AAAI</b>)</i>, 2026.<br>
-    [<a href="https://arxiv.org/abs/2511.19169" style="text-decoration: none">arXiv</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-ICCV">ICCV</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Fast Image Super-Resolution via Consistency Rectified Flow</div>
+                    <div class="pub-authors"><strong>Jiaqi Xu</strong>, Wenbo Li, Haoze Sun, Fan Li, Zhixin Wang, Long Peng, Jingjing Ren, Haoran Yang, Xiaowei Hu, Renjing Pei, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">International Conference on Computer Vision (ICCV), 2025.</div>
+                </div>
+            </li>
 
-<p><b>Real-World Adverse Weather Image Restoration via Dual-Level Reinforcement Learning with High-Quality Cold Start</b><br>
-    Fuyang Liu, <b>Jiaqi Xu</b>, Xiaowei Hu<br>
-    <i>Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</i>, 2025.<br>
-    [<a href="https://arxiv.org/abs/2511.05095" style="text-decoration: none">arXiv</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-ICCV">ICCV</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Turbo2K: Towards Ultra-Efficient and High-Quality 2K Video Synthesis</div>
+                    <div class="pub-authors">Jingjing Ren, Wenbo Li, Zhongdao Wang, Haoze Sun, Bangzhen Liu, Haoyu Chen, <strong>Jiaqi Xu</strong>, Aoxue Li, Shifeng Zhang, Bin Shao, Yong Guo, Lei Zhu</div>
+                    <div class="pub-venue-line">International Conference on Computer Vision (ICCV), 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2504.14470">arXiv</a>
+                        <a class="btn" href="https://jingjingrenabc.github.io/turbo2k/">project</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>PocketSR: The Super-Resolution Expert in Your Pocket Mobiles</b><br>
-    Haoze Sun, Linfeng Jiang, Fan Li, Renjing Pei, Zhixin Wang, Yong Guo, <b>Jiaqi Xu</b>, Haoyu Chen, Jin Han, Fenglong Song, Yujiu Yang, Wenbo Li<br>
-    <i>Conference on Neural Information Processing Systems (<b>NeurIPS</b>)</i>, 2025.<br>
-    [<a href="https://arxiv.org/abs/2510.03012" style="text-decoration: none">arXiv</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-TCSVT">TCSVT</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Unifying Physically-Informed Weather Priors in A Single Model for Image Restoration Across Multiple Adverse Weather Conditions</div>
+                    <div class="pub-authors"><strong>Jiaqi Xu</strong>, Xiaowei Hu, Lei Zhu, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">IEEE Transactions on Circuits and Systems for Video Technology (TCSVT), accepted in 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://ieeexplore.ieee.org/document/10966874">paper</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Fast Image Super-Resolution via Consistency Rectified Flow</b><br>
-    <b>Jiaqi Xu</b>, Wenbo Li, Haoze Sun, Fan Li, Zhixin Wang, Long Peng, Jingjing Ren, Haoran Yang, Xiaowei Hu, Renjing Pei, Pheng-Ann Heng<br>
-    <i>International Conference on Computer Vision (<b>ICCV</b>)</i>, 2025.<br>
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-CVPR">CVPR</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">EchoTraffic: Enhancing Traffic Anomaly Understanding with Audio-Visual Insights</div>
+                    <div class="pub-authors">Zhenghao Xing, Hao Chen, Binzhu Xie, <strong>Jiaqi Xu</strong>, Ziyu Guo, Xuemiao Xu, Jianye Hao, Chi-Wing Fu, Xiaowei Hu, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">Conference on Computer Vision and Pattern Recognition (CVPR), 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://openaccess.thecvf.com/content/CVPR2025/html/Xing_EchoTraffic_Enhancing_Traffic_Anomaly_Understanding_with_Audio-Visual_Insights_CVPR_2025_paper.html">paper</a>
+                        <a class="btn" href="https://github.com/HarryHsing/EchoTraffic">code</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Turbo2K: Towards Ultra-Efficient and High-Quality 2K Video Synthesis</b><br>
-    Jingjing Ren, Wenbo Li, Zhongdao Wang, Haoze Sun, Bangzhen Liu, Haoyu Chen, <b>Jiaqi Xu</b>, Aoxue Li, Shifeng Zhang, Bin Shao, Yong Guo, Lei Zhu<br>
-    <i>International Conference on Computer Vision (<b>ICCV</b>)</i>, 2025.<br>
-    [<a href="https://arxiv.org/abs/2504.14470" style="text-decoration: none">arXiv</a>]
-    [<a href="https://jingjingrenabc.github.io/turbo2k/" style="text-decoration: none">project</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-CVPR">CVPR</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Dual Prompting Image Restoration with Diffusion Transformers</div>
+                    <div class="pub-authors">Dehong Kong, Fan Li, Zhixin Wang, <strong>Jiaqi Xu</strong>, Renjing Pei, Wenbo Li, Wenqi Ren</div>
+                    <div class="pub-venue-line">Conference on Computer Vision and Pattern Recognition (CVPR), 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2504.17825">arXiv</a>
+                        <a class="btn" href="https://openaccess.thecvf.com/content/CVPR2025/html/Kong_Dual_Prompting_Image_Restoration_with_Diffusion_Transformers_CVPR_2025_paper.html">paper</a>
+                        <a class="btn" href="https://github.com/kongdehong/DPIR">code</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Unifying Physically-Informed Weather Priors in A Single Model for Image Restoration Across Multiple Adverse Weather Conditions</b><br>
-    <b>Jiaqi Xu</b>, Xiaowei Hu, Lei Zhu, Pheng-Ann Heng<br>
-    <i>IEEE Transactions on Circuits and Systems for Video Technology (<b>TCSVT</b>)</i>, accepted in 2025.<br>
-    [<a href="https://ieeexplore.ieee.org/document/10966874" style="text-decoration: none">paper</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-ICLR">ICLR</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Towards Realistic Data Generation for Real-World Super-Resolution</div>
+                    <div class="pub-authors">Long Peng, Wenbo Li, Renjing Pei, Jingjing Ren, <strong>Jiaqi Xu</strong>, Yang Wang, Yang Cao, Zheng-Jun Zha</div>
+                    <div class="pub-venue-line">International Conference on Learning Representations (ICLR), 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2406.07255">arXiv</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>EchoTraffic: Enhancing Traffic Anomaly Understanding with Audio-Visual Insights</b><br>
-    Zhenghao Xing, Hao Chen, Binzhu Xie, <b>Jiaqi Xu</b>, Ziyu Guo, Xuemiao Xu, Jianye Hao, Chi-Wing Fu, Xiaowei Hu, Pheng-Ann Heng<br>
-    <i>Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</i>, 2025.<br>
-    [<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Xing_EchoTraffic_Enhancing_Traffic_Anomaly_Understanding_with_Audio-Visual_Insights_CVPR_2025_paper.html" style="text-decoration: none">paper</a>]
-    [<a href="https://github.com/HarryHsing/EchoTraffic" style="text-decoration: none">code</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-ECCV">ECCV</span><br><span style="font-size:11px;color:#888">2024</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Towards Real-World Adverse Weather Image Restoration: Enhancing Clearness and Semantics with Vision-Language Models</div>
+                    <div class="pub-authors"><strong>Jiaqi Xu</strong>, Mengyang Wu, Xiaowei Hu, Chi-Wing Fu, Qi Dou, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">European Conference on Computer Vision (ECCV), 2024.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2409.02101">arXiv</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Dual Prompting Image Restoration with Diffusion Transformers</b><br>
-    Dehong Kong, Fan Li, Zhixin Wang, <b>Jiaqi Xu</b>, Renjing Pei, Wenbo Li, Wenqi Ren<br>
-    <i>Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</i>, 2025.<br>
-    [<a href="https://arxiv.org/abs/2504.17825" style="text-decoration: none">arXiv</a>]
-    [<a href="https://openaccess.thecvf.com/content/CVPR2025/html/Kong_Dual_Prompting_Image_Restoration_with_Diffusion_Transformers_CVPR_2025_paper.html" style="text-decoration: none">paper</a>]
-    [<a href="https://github.com/kongdehong/DPIR" style="text-decoration: none">code</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-NAACL">NAACL</span><br><span style="font-size:11px;color:#888">2024</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Unveiling the Generalization Power of Fine-Tuned Large Language Models</div>
+                    <div class="pub-authors">Haoran Yang, Yumeng Zhang, <strong>Jiaqi Xu</strong>, Hongyuan Lu, Pheng-Ann Heng, Wai Lam</div>
+                    <div class="pub-venue-line">Conference of the North American Chapter of the Association for Computational Linguistics (NAACL), 2024.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2403.09162">arXiv</a>
+                        <a class="btn" href="https://aclanthology.org/2024.naacl-long.51/">paper</a>
+                        <a class="btn" href="https://github.com/LHRYANG/Generalization_of_FT-LLM">code</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Towards Realistic Data Generation for Real-World Super-Resolution</b><br>
-    Long Peng, Wenbo Li, Renjing Pei, Jingjing Ren, <b>Jiaqi Xu</b>, Yang Wang, Yang Cao, Zheng-Jun Zha<br>
-    <i>International Conference on Learning Representations (<b>ICLR</b>)</i>, 2025.<br>
-    [<a href="https://arxiv.org/abs/2406.07255" style="text-decoration: none">arXiv</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-ACM">CSUR</span><br><span style="font-size:11px;color:#888">2025</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">A Survey of Reasoning with Foundation Models: Concepts, Methodologies, and Outlook</div>
+                    <div class="pub-authors">Jiankai Sun, Chuanyang Zheng, Enze Xie, Zhengying Liu, Ruihang Chu, Jianing Qiu, <strong>Jiaqi Xu</strong>, Mingyu Ding, Hongyang Li, Mengzhe Geng, Yue Wu, Wenhai Wang, Junsong Chen, Zhangyue Yin, Xiaozhe Ren, Jie Fu, Junxian He, Wu Yuan, Qi Liu, Xihui Liu, Yu Li, Hao Dong, Yu Cheng, Ming Zhang, Pheng Ann Heng, Jifeng Dai, Ping Luo, Jingdong Wang, Ji-Rong Wen, Xipeng Qiu, Yike Guo, Hui Xiong, Qun Liu, and Zhenguo Li</div>
+                    <div class="pub-venue-line">ACM Computing Surveys, accepted in 2025.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2312.11562">arXiv</a>
+                        <a class="btn" href="https://dl.acm.org/doi/10.1145/3729218">paper</a>
+                        <a class="btn" href="https://github.com/reasoning-survey/Awesome-Reasoning-Foundation-Models">github</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Towards Real-World Adverse Weather Image Restoration: Enhancing Clearness and Semantics with Vision-Language Models</b><br>
-    <b>Jiaqi Xu</b>, Mengyang Wu, Xiaowei Hu, Chi-Wing Fu, Qi Dou, Pheng-Ann Heng<br>
-    <i>European Conference on Computer Vision (<b>ECCV</b>)</i>, 2024.<br>
-    [<a href="https://arxiv.org/abs/2409.02101" style="text-decoration: none">arXiv</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-CVPR">CVPR</span><br><span style="font-size:11px;color:#888">2023</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Video Dehazing via a Multi-Range Temporal Alignment Network with Physical Prior</div>
+                    <div class="pub-authors"><strong>Jiaqi Xu</strong>, Xiaowei Hu, Lei Zhu, Qi Dou, Jifeng Dai, Yu Qiao, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">Conference on Computer Vision and Pattern Recognition (CVPR), 2023.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2303.09757">arXiv</a>
+                        <a class="btn" href="https://openaccess.thecvf.com/content/CVPR2023/html/Xu_Video_Dehazing_via_a_Multi-Range_Temporal_Alignment_Network_With_Physical_CVPR_2023_paper">paper</a>
+                        <a class="btn" href="https://github.com/jiaqixuac/MAP-Net">code</a>
+                        <a class="btn" href="https://github.com/jiaqixuac/MAP-Net/blob/main/docs/dataset_prepare.md">dataset</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Unveiling the Generalization Power of Fine-Tuned Large Language Models</b><br>
-    Haoran Yang, Yumeng Zhang, <b>Jiaqi Xu</b>, Hongyuan Lu, Pheng-Ann Heng, Wai Lam<br>
-    <i>Conference of the North American Chapter of the Association for Computational Linguistics (<b>NAACL</b>)</i>, 2024.<br>
-    [<a href="https://arxiv.org/abs/2403.09162" style="text-decoration: none">arXiv</a>]
-    [<a href="https://aclanthology.org/2024.naacl-long.51/" style="text-decoration: none">paper</a>]
-    [<a href="https://github.com/LHRYANG/Generalization_of_FT-LLM" style="text-decoration: none">code</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-ECR">ECR</span><br><span style="font-size:11px;color:#888">2022</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Deep learning for detecting midline shift on brain CT: a retrospective validation study using multinational data and quantitative measurements</div>
+                    <div class="pub-authors"><strong>Jiaqi Xu</strong>, Richard Du, Calvin Mak, Jill Abrigo, Efstratios Tsougenis, Joyce Chan, Qi Dou, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">European Congress of Radiology (ECR), 2022. (Poster)</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://epos.myesr.org/poster/esr/ecr2022/C-11958">link</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>A Survey of Reasoning with Foundation Models: Concepts, Methodologies, and Outlook</b><br>
-    Jiankai Sun, Chuanyang Zheng, Enze Xie, Zhengying Liu, Ruihang Chu, Jianing Qiu, <b>Jiaqi Xu</b>, Mingyu Ding,<br>
-    Hongyang Li, Mengzhe Geng, Yue Wu, Wenhai Wang, Junsong Chen, Zhangyue Yin, Xiaozhe Ren, Jie Fu,<br>
-    Junxian He, Wu Yuan, Qi Liu, Xihui Liu, Yu Li, Hao Dong, Yu Cheng, Ming Zhang, Pheng Ann Heng, Jifeng<br>
-    Dai, Ping Luo, Jingdong Wang, Ji-Rong Wen, Xipeng Qiu, Yike Guo, Hui Xiong, Qun Liu, and Zhenguo Li<br>
-    <i>ACM Computing Surveys</i>, accepted in 2025.<br>
-    [<a href="https://arxiv.org/abs/2312.11562" style="text-decoration: none">arXiv</a>]
-    [<a href="https://dl.acm.org/doi/10.1145/3729218" style="text-decoration: none">paper</a>]
-    [<a href="https://github.com/reasoning-survey/Awesome-Reasoning-Foundation-Models" style="text-decoration: none">github</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-ICRA">ICRA</span><br><span style="font-size:11px;color:#888">2022</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">3D Perception based Imitation Learning under Limited Demonstration for Laparoscope Control in Robotic Surgery</div>
+                    <div class="pub-authors">Bin Li, Ruofeng Wei, <strong>Jiaqi Xu</strong>, Bo Lu, Chi Hang Yee, Chi Fai Ng, Pheng-Ann Heng, Qi Dou, Yun-Hui Liu</div>
+                    <div class="pub-venue-line">International Conference on Robotics and Automation (ICRA), 2022.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2204.03195">arXiv</a>
+                        <a class="btn" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9812010">paper</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Video Dehazing via a Multi-Range Temporal Alignment Network with Physical Prior</b><br>
-    <b>Jiaqi Xu</b>, Xiaowei Hu, Lei Zhu, Qi Dou, Jifeng Dai, Yu Qiao, Pheng-Ann Heng<br>
-    <i>Conference on Computer Vision and Pattern Recognition (<b>CVPR</b>)</i>, 2023.<br>
-    [<a href="https://arxiv.org/abs/2303.09757" style="text-decoration: none">arXiv</a>]
-    [<a href="https://openaccess.thecvf.com/content/CVPR2023/html/Xu_Video_Dehazing_via_a_Multi-Range_Temporal_Alignment_Network_With_Physical_CVPR_2023_paper" style="text-decoration: none">paper</a>]
-    [<a href="https://github.com/jiaqixuac/MAP-Net" style="text-decoration: none">code</a>]
-    [<a href="https://github.com/jiaqixuac/MAP-Net/blob/main/docs/dataset_prepare.md" style="text-decoration: none">dataset</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-IROS">IROS</span><br><span style="font-size:11px;color:#888">2021</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">SurRoL: An Open-source Reinforcement Learning Centered and dVRK Compatible Platform for Surgical Robot Learning</div>
+                    <div class="pub-authors"><strong>Jiaqi Xu</strong>*, Bin Li*, Bo Lu, Yun-Hui Liu, Qi Dou, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">International Conference on Intelligent Robots and Systems (IROS), 2021.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2108.13035">arXiv</a>
+                        <a class="btn" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9635867">paper</a>
+                        <a class="btn" href="https://github.com/med-air/SurRoL">code</a>
+                        <a class="btn" href="https://med-air.github.io/SurRoL/">project</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>Deep learning for detecting midline shift on brain CT:
-    a retrospective validation study using multinational data and quantitative measurements</b><br>
-    <b>Jiaqi Xu</b>, Richard Du, Calvin Mak, Jill Abrigo, Efstratios Tsougenis, Joyce Chan, Qi Dou, Pheng-Ann Heng<br>
-    <i>European Congress of Radiology (<b>ECR</b>)</i>, 2022. (Poster)<br>
-    [<a href="https://epos.myesr.org/poster/esr/ecr2022/C-11958" style="text-decoration: none">link</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-TMI">TMI</span><br><span style="font-size:11px;color:#888">2020</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">Deep Mining External Imperfect Data for Chest X-ray Disease Screening</div>
+                    <div class="pub-authors">Luyang Luo, Lequan Yu, Hao Chen, Quande Liu, Xi Wang, <strong>Jiaqi Xu</strong>, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">IEEE Transactions on Medical Imaging (TMI), 2020.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/2006.03796">arXiv</a>
+                        <a class="btn" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9110911">paper</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>3D Perception based Imitation Learning under Limited Demonstration
-    for Laparoscope Control in Robotic Surgery</b><br>
-    Bin Li, Ruofeng Wei, <b>Jiaqi Xu</b>, Bo Lu, Chi Hang Yee, Chi Fai Ng, Pheng-Ann Heng, Qi Dou, Yun-Hui Liu<br>
-    <i>International Conference on Robotics and Automation (<b>ICRA</b>)</i>, 2022.<br>
-    [<a href="https://arxiv.org/abs/2204.03195" style="text-decoration: none">arXiv</a>]
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9812010" style="text-decoration: none">paper</a>]
-</p>
+            <li class="pub-item">
+                <div class="pub-venue-col"><span class="venue venue-MICCAI">MICCAI</span><br><span style="font-size:11px;color:#888">2019</span></div>
+                <div class="pub-body">
+                    <div class="pub-title">IRNet: Instance Relation Network for Overlapping Cervical Cell Segmentation</div>
+                    <div class="pub-authors">Yanning Zhou, Hao Chen, <strong>Jiaqi Xu</strong>, Qi Dou, Pheng-Ann Heng</div>
+                    <div class="pub-venue-line">International Conference on Medical Image Computing and Computer Assisted Intervention (MICCAI), 2019.</div>
+                    <div class="pub-links">
+                        <a class="btn" href="https://arxiv.org/abs/1908.06623">arXiv</a>
+                        <a class="btn" href="https://link.springer.com/chapter/10.1007/978-3-030-32239-7_71">paper</a>
+                    </div>
+                </div>
+            </li>
 
-<p><b>SurRoL: An Open-source Reinforcement Learning Centered and dVRK
-    Compatible Platform for Surgical Robot Learning</b><br>
-    <b>Jiaqi Xu</b>*, Bin Li*, Bo Lu, Yun-Hui Liu, Qi Dou, Pheng-Ann Heng<br>
-    <i>International Conference on Intelligent Robots and Systems (<b>IROS</b>)</i>, 2021.<br>
-    [<a href="https://arxiv.org/abs/2108.13035" style="text-decoration: none">arXiv</a>]
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9635867" style="text-decoration: none">paper</a>]
-    [<a href="https://github.com/med-air/SurRoL" style="text-decoration: none">code</a>]
-    [<a href="https://med-air.github.io/SurRoL/" style="text-decoration: none">project</a>]
-</p>
+        </ul>
+    </section>
 
-<p><b>Deep Mining External Imperfect Data for Chest X-ray Disease Screening</b><br>
-    Luyang Luo, Lequan Yu, Hao Chen, Quande Liu, Xi Wang, <b>Jiaqi Xu</b>, Pheng-Ann Heng<br>
-    <i>IEEE Transactions on Medical Imaging (<b>TMI</b>)</i>, 2020.<br>
-    [<a href="https://arxiv.org/abs/2006.03796" style="text-decoration: none">arXiv</a>]
-    [<a href="https://ieeexplore.ieee.org/stamp/stamp.jsp?arnumber=9110911" style="text-decoration: none">paper</a>]
-</p>
+    <!-- ══ Experience ══ -->
+    <section id="experience">
+        <h2>Experience</h2>
 
-<p><b>IRNet: Instance Relation Network for Overlapping Cervical Cell Segmentation</b><br>
-    Yanning Zhou, Hao Chen, <b>Jiaqi Xu</b>, Qi Dou, Pheng-Ann Heng<br>
-    <i>International Conference on Medical Image Computing and Computer Assisted Intervention (<b>MICCAI</b>)</i>, 2019.<br>
-    [<a href="https://arxiv.org/abs/1908.06623" style="text-decoration: none">arXiv</a>]
-    [<a href="https://link.springer.com/chapter/10.1007/978-3-030-32239-7_71" style="text-decoration: none">paper</a>]
-</p>
+        <div class="exp-item">
+            <div class="exp-org">Shanghai AI Laboratory</div>
+            <div class="exp-meta">Jan 2022 – Mar 2023 &nbsp;·&nbsp; Shanghai, China</div>
+            <div class="exp-meta">Research Intern &nbsp;·&nbsp; Work With: <a href="https://xw-hu.github.io/">Dr. Xiaowei Hu</a></div>
+        </div>
 
+        <div class="exp-item">
+            <div class="exp-org">Hospital Authority, AI Lab</div>
+            <div class="exp-meta">May 2021 – Aug 2021 &nbsp;·&nbsp; Hong Kong SAR</div>
+            <div class="exp-meta">Research Assistant &nbsp;·&nbsp; Work With: <a href="https://www.linkedin.com/in/tsougenis/?originalSubdomain=hk">Dr. Efstratios Tsougenis</a></div>
+        </div>
 
-<h2><b>Experience</b></h2>
+        <div class="exp-item">
+            <div class="exp-org">Imsight Medical Technology, AI Research Lab</div>
+            <div class="exp-meta">Jul 2018 – Sep 2018 &nbsp;·&nbsp; Shenzhen, China</div>
+            <div class="exp-meta">R&amp;D Intern &nbsp;·&nbsp; Work With: <a href="https://www.cse.ust.hk/admin/people/faculty/profile/jhc">Dr. Hao Chen</a></div>
+        </div>
 
-<p>
-    Shanghai AI Laboratory<br>
-    Jan 2022 - Mar 2023 | Shanghai, China<br>
-    Research Intern,
-    Advisor: <a href="https://xw-hu.github.io/" style="text-decoration: none">Dr. Xiaowei Hu</a>
-</p>
+        <div class="exp-item">
+            <div class="exp-org">Tsinghua University, Department of Biomedical Engineering</div>
+            <div class="exp-meta">Oct 2017 – Jun 2018 &nbsp;·&nbsp; Beijing, China</div>
+            <div class="exp-meta">Research Intern &nbsp;·&nbsp; Work With: <a href="https://brain.tsinghua.edu.cn/info/1010/1012.htm">Prof. Sen Song</a></div>
+        </div>
+    </section>
 
-<p>
-    Hospital Authority, AI Lab<br>
-    May 2021 - Aug 2021 | Hong Kong SAR<br>
-    Research Assistant,
-    Advisor: <a href="https://www.linkedin.com/in/tsougenis/?originalSubdomain=hk" style="text-decoration: none">Dr. Efstratios Tsougenis</a>
-</p>
+    <!-- ══ Honors & Awards ══ -->
+    <section id="awards">
+        <h2>Honors &amp; Awards</h2>
+        <ul class="award-list">
+            <li>CVPR DEI Travel Award, 2023</li>
+            <li>Dean's List, Faculty of Engineering, CUHK, 2019</li>
+            <li>Information Engineering Scholarship, CUHK, 2018–2019</li>
+            <li>Outstanding Graduate, Beihang University, 2018</li>
+            <li>Academic Scholarship, Beihang University, 2016–2017</li>
+            <li>National Scholarship in China, 2016</li>
+            <li>First Prize in National Olympiad of Informatics, Shandong Province, 2013</li>
+        </ul>
+    </section>
 
-<p>
-    Imsight Medical Technology, AI Research Lab<br>
-    Jul 2018 - Sep 2018 | Shenzhen, China<br>
-    R&D Intern,
-    Advisor: <a href="https://www.cse.ust.hk/admin/people/faculty/profile/jhc" style="text-decoration: none">Dr. Hao Chen</a>
-</p>
+    <!-- ══ Teaching ══ -->
+    <section id="teaching">
+        <h2>Teaching</h2>
+        <p style="font-size:14.5px;margin-bottom:12px;">I served as teaching assistant for the following courses.</p>
+        <ul class="teach-list">
+            <li>FTEC5510 Advanced Financial Infrastructure, Spring &amp; Fall 2023.</li>
+            <li>CSCI3260 Principles of Computer Graphics, Fall 2019, 2020, 2021, 2022.</li>
+            <li>CSCI1520 Computer Principles and C++ Programming, Spring 2020.</li>
+        </ul>
+    </section>
 
-<p>
-    Tsinghua Univerisity, Department of Biomedical Engineering<br>
-    Oct 2017 - Jun 2018 | Beijing, China<br>
-    Research Intern,
-    Advisor: <a href="https://brain.tsinghua.edu.cn/info/1010/1012.htm" style="text-decoration: none">Prof. Sen Song</a>
-</p>
+    <!-- ══ Professional Activities ══ -->
+    <section id="service">
+        <h2>Professional Activities</h2>
+        <div class="activity-section">
+            <h3>Conference Reviews</h3>
+            <p>BMVC 26, SIGGRAPH 26, ECCV 26, MICCAI 26, CVPR 26, ICLR 26, AAAI 26, WACV 26,
+            NeurIPS 25, ICCV 25, ICML 25, CVPR 25, ICLR 25, AAAI 25, MICCAI 25, ICME 25,
+            ECCV 24, ICML 24, ICLR 24, AAAI 24, ACM MM 24, MICCAI 24, ICME 24, ISBI 24,
+            CVPR 23, NeurIPS 23, ACM MM 23, MICCAI 23, ISBI 23,
+            ACM MM 22, MICCAI 22 (<a href="https://conferences.miccai.org/2022/en/OUTSTANDING-REVIEWER-AWARDS.html">Outstanding Reviewer Honorable Mentions</a>), IPCAI 22.</p>
+        </div>
+        <div class="activity-section">
+            <h3>Journal Reviews</h3>
+            <p>IJCV, RA-L.</p>
+        </div>
+    </section>
 
+    <!-- ══ Miscellaneous ══ -->
+    <section id="misc">
+        <h2>Miscellaneous</h2>
+        <p class="misc-text">
+            I like
+            <a href="assets/jiaqi_hkmarathon.jpeg">running</a>,
+            <a href="assets/jiaqi_queer.jpg">hiking</a>.
+        </p>
+    </section>
 
-<h2><b>Hornors & Awards</b></h2>
-<p>
-    CVPR DEI Travel Award, 2023<br>
-    Dean's List, Faculty of Engineering, CUHK, 2019<br>
-    Information Engineering Scholarship, CUHK, 2018-2019<br>
-    Outstanding Graduate, Beihang University, 2018<br>
-    Academic Scholarship, Beihang University, 2016-2017<br>
-    National Scholarship in China, 2016<br>
-    First Prize in National Olympiad of Informatics, Shandong Province, 2013
-</p>
-
-
-<h2><b>Teaching</b></h2>
-<p>
-    I served as teaching assistant for the following courses.
-</p>
-
-<p>
-    FTEC5510 Advanced Financial Infrastructure, Spring & Fall 2023.<br>
-    CSCI3260 Principles of Computer Graphics, Fall 2019, 2020, 2021, 2022.<br>
-    CSCI1520 Computer Principles and C++ Programming, Spring 2020.<br>
-</p>
-
-
-<h2><b>Professional Activities</b></h2>
-<li>
-    <b> Conference Reviews </b>
-    <p>
-        BMVC 26, SIGGRAPH 26, ECCV 26, MICCAI 26, CVPR 26, ICLR 26, AAAI 26, WACV 26,<br>
-        NeruIPS 25, ICCV 25, ICML 25, CVPR 25, ICLR 25, AAAI 25, MICCAI 25, ICME 25,
-        ECCV 24, ICML 24, ICLR 24, AAAI 24, ACM MM 24, MICCAI 24, ICME 24, ISBI 24,<br>
-        CVPR 23, NeurIPS 23, ACM MM 23, MICCAI 23, ISBI 23,
-        ACM MM 22, MICCAI 22 (<a href="https://conferences.miccai.org/2022/en/OUTSTANDING-REVIEWER-AWARDS.html" style="text-decoration: none">Outstanding Reviewer Honorable Mentions</a>), IPCAI 22.
-    </p>
-</li>
-
-<li>
-    <b> Journal Reviews </b>
-    <p>
-        IJCV, RA-L.
-    </p>
-</li>
-
-
-<h2><b>Miscellaneous</b></h2>
-<p>
-    I like
-    <a href="assets/jiaqi_hkmarathon.jpeg" style="text-decoration: none">running</a>,
-    <a href="assets/jiaqi_queer.jpg" style="text-decoration: none">hiking</a>.
-    <!-- <br>Proud of being a member of <a href="assets/wavers.jpg">Wavers</a>. -->
-</p>
-
+</div>
 
 <!-- Global site tag (gtag.js) - Google Analytics -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=UA-169554229-1"></script>
 <script>
     window.dataLayer = window.dataLayer || [];
-
-    function gtag() {
-        dataLayer.push(arguments);
-    }
-
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'UA-169554229-1');
 </script>
 
-<script
-        type="text/javascript">document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278990994'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278990994' type='text/javascript'%3E%3C/script%3E"));</script>
+<script type="text/javascript">document.write(unescape("%3Cspan style='display:none;' id='cnzz_stat_icon_1278990994'%3E%3C/span%3E%3Cscript src='https://v1.cnzz.com/z_stat.php%3Fid%3D1278990994' type='text/javascript'%3E%3C/script%3E"));</script>
 </body>
 
 </html>
